@@ -3,7 +3,7 @@
    <div class="swiper-container" id="homebanner-box">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="../../img/homeimage/0001.jpg" alt="" /></div>
-            <div class="swiper-slide"><img src="../../img/homeimage/0002.jpg" alt="" /></div>
+            <div @click="showDetails" class="swiper-slide"><img src="../../img/homeimage/0002.jpg" alt="" /></div>
             <div class="swiper-slide"><img src="../../img/homeimage/0003.jpg" alt="" /></div>
             <div class="swiper-slide"><img src="../../img/homeimage/0004.jpg" alt="" /></div>
            	
@@ -22,13 +22,18 @@
 </template>
 
 <script>
-
+import angel from '../../event'
 export default {
   name: 'homebanner',
   data () {
     return {
     
     }
+  },
+  methods:{
+  	showDetails(){
+  		angel.$emit('toggleDetails')
+  	}
   },
    mounted(){
   	new Swiper('#homebanner-box', {

@@ -1,16 +1,20 @@
 <template>
   <div class="mine">
-    mine
+   <mine-component></mine-component>
   </div>
 </template>
 
 <script>
+	import MineComponent from './Mine_components/MineComponent'
 export default {
   name: 'mine',
   data () {
     return {
     
     }
+  },
+  components:{
+		MineComponent
   }
 }
 </script>

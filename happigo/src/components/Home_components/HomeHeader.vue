@@ -2,7 +2,7 @@
   <header class="homeheader" id="homeheader">
     <div class="homeheader-box">
     	<span></span>
-    	<div class="homeheader-box-search">家里交给它 夏日浪到飞起→</div>
+    	<div @click="showSearch" class="homeheader-box-search">家里交给它 夏日浪到飞起→</div>
     </div>
     <div class="homeheader-nav">
     	<div class="swiper-container" id="homeheader-list">
@@ -28,12 +28,18 @@
 </template>
 
 <script>
+	import angel from '../../event'
 export default {
   name: 'homeheader',
   data () {
     return {
     
     }
+  },
+  methods:{
+  	showSearch(){
+  		angel.$emit('toggleSearch')
+  	}
   },
   mounted(){
   	new Swiper(".swiper-container")

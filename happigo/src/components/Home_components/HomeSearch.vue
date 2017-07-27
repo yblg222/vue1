@@ -1,7 +1,7 @@
 <template>
   <div class="homesearch">
     <div class="sea-title">
-    	<div class="sea-title-return">
+    	<div class="sea-title-return" @click="showSearch">
     		<img src="../../img/homeimage/ico_fh.png" alt="" />
     	</div>
     	<div class="sea-title-sou">
@@ -49,13 +49,19 @@
 </template>
 
 <script>
+	import angel from '../../event'
 export default {
   name: 'homesearch',
   data () {
     return {
     
     }
-  }
+  },
+  methods:{
+  	showSearch(){
+  		angel.$emit('toggleSearch')
+  	}
+  },
 }
 </script>
 

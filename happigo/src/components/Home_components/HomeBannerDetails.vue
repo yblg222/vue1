@@ -1,7 +1,7 @@
 <template>
   <div class="homebannerdetails">
     <div class="hbd-top">
-    	<div class="hbd-top-left">
+    	<div class="hbd-top-left" @click="showDetails">
     		<img src="../../img/homeimage/ico_fh.png" alt="" />
     	</div>
     	<div class="hbd-top-conter">红爆美食圈今夏超人气</div>
@@ -68,12 +68,34 @@
 </template>
 
 <script>
+	import angel from '../../event'
 export default {
   name: 'homebannerdetails',
   data () {
     return {
     
     }
+  },
+  methods:{
+  	showDetails(){
+  		angel.$emit('toggleDetails')
+  	},
+  	
+  	getWeather(){
+  		      var that=this;
+  		    	this.$http.get("http://restapi.happigo.com/RESTProxy.jsp?method=GET&resource=1.0/ec.app.zt.goods/6276&t=Fri%20Jul%2028%202017%2000:39:53%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)",{
+  		    		params:{
+  		    					 latitude:this.position.latitude ,
+    			         	 longitude:this.position.longitude
+  		    		}
+  	}).then((res)=>{
+  		  that.tempture=res.data.temperature
+  		  console.log(res.data.temperature)
+  	})
+  	}
+  },
+  mounted(){
+  			this.getWeather()
   }
 }
 </script>
